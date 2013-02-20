@@ -1,0 +1,46 @@
+To generate the liferay service archetype:
+mvn archetype:generate
+
+Search for liferay service builder archetype
+liferay-servicebuilder-archetype
+
+Choose the appropriate option
+1
+
+Choose a version
+6.1.0
+
+Now define the maven artifact properties & create the archetype folder structure.
+
+Update the parent pom to add the following properties:
+<properties>
+		<liferay.auto.deploy.dir>E:\deploy</liferay.auto.deploy.dir> 
+		<liferay.version>6.1.0</liferay.version>
+		<java.version>1.6</java.version>
+	</properties>
+	
+In parent pom under liferay-maven-plugin add the following exclusion:(http://www.liferay.com/community/forums/-/message_boards/message/12255289)
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.jackrabbit</groupId>
+						<artifactId>jackrabbit-core</artifactId>
+						<version>2.1.2</version>
+						<exclusions>
+							<exclusion>
+								<groupId>org.slf4j</groupId>
+								<artifactId>jcl-over-slf4j</artifactId>
+							</exclusion>
+						</exclusions>
+					</dependency>
+				</dependencies>
+				
+In service.xml, add a proper namespace and since we are not working on the data model, remove all column related entries.
+In our case, we use a simple service.xml
+<service-builder package-path="com.lemmecode">
+	<namespace>service</namespace>
+	<entity name="Test" local-service="false" remote-service="true">
+	</entity>
+</service-builder>
+
+Now run, mvn liferay:build-service under the portlet module of the project.
+
