@@ -42,5 +42,18 @@ In our case, we use a simple service.xml
 	</entity>
 </service-builder>
 
-Now run, mvn liferay:build-service under the portlet module of the project.
+Now run, mvn liferay:build-service under the portlet module of the project. This will generate all the class files.
 
+Use the impl class TestServiceImpl under service.impl package to add or modify the functionality. Never modify the classes under service package directly.
+
+Generate a eclipse project of soap-service-portlet using mvn eclipse:eclipse.
+In TestServiceImpl, the desired functionality can be added by using the service mechanism of liferay and PortalClassInvoker.
+
+Suppose we want to check whether liferay's ldap authentication is enabled or not.
+We can do this in 3 ways:
+1. Using portal-service method which can be used directly.
+2. Using PortalClassInvoker which will use portal-impl methods. We need to use PortalClassInvoker because the methods of portal-impl can't be used directly in a portlet. http://www.liferay.com/community/forums/-/message_boards/message/8389425
+3. Using local services.
+
+The WSDL can be generated using mvn liferay:build-wsdd
+The resultant WAR can be deployed in liferay as a portlet.

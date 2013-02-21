@@ -26,6 +26,10 @@ public class TestServiceUtil {
      *
      * Never modify this class directly. Add custom service methods to {@link com.lemmecode.service.impl.TestServiceImpl} and rerun ServiceBuilder to regenerate this class.
      */
+    public static java.lang.String getLDAPAuthStatus() {
+        return getService().getLDAPAuthStatus();
+    }
+
     public static void clearService() {
         _service = null;
     }

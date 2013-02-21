@@ -19,6 +19,10 @@ public class TestServiceWrapper implements TestService,
         _testService = testService;
     }
 
+    public java.lang.String getLDAPAuthStatus() {
+        return _testService.getLDAPAuthStatus();
+    }
+
     /**
      * @deprecated Renamed to {@link #getWrappedService}
      */

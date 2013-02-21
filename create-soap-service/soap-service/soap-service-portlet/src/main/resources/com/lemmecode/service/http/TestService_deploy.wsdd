@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+	<service name="Plugin_service_TestService" provider="java:RPC" style="rpc" use="encoded">
+		<operation xmlns:operNS="urn:http.service.lemmecode.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getLDAPAuthStatus" qname="operNS:getLDAPAuthStatus" returnQName="getLDAPAuthStatusReturn" returnType="rtns:string" soapAction=""> </operation>
+		<parameter name="allowedMethods" value="getLDAPAuthStatus" />
+		<parameter name="className" value="com.lemmecode.service.http.TestServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="TestServiceSoap" />
+		<parameter name="wsdlServiceElement" value="TestServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_service_TestService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.lemmecode.com" />
+	</service>
+</deployment>

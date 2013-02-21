@@ -1,5 +1,12 @@
 package com.lemmecode.service.http;
 
+import com.lemmecode.service.TestServiceUtil;
+
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
+
+import java.rmi.RemoteException;
+
 /**
  * <p>
  * This class provides a SOAP utility for the
@@ -33,4 +40,18 @@ package com.lemmecode.service.http;
  * @generated
  */
 public class TestServiceSoap {
+    private static Log _log = LogFactoryUtil.getLog(TestServiceSoap.class);
+
+    public static java.lang.String getLDAPAuthStatus()
+        throws RemoteException {
+        try {
+            java.lang.String returnValue = TestServiceUtil.getLDAPAuthStatus();
+
+            return returnValue;
+        } catch (Exception e) {
+            _log.error(e, e);
+
+            throw new RemoteException(e.getMessage());
+        }
+    }
 }

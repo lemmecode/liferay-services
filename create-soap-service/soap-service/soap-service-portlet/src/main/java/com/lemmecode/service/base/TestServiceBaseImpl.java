@@ -10,6 +10,7 @@ import com.liferay.portal.kernel.dao.jdbc.SqlUpdate;
 import com.liferay.portal.kernel.dao.jdbc.SqlUpdateFactoryUtil;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.util.InfrastructureUtil;
+import com.liferay.portal.service.CompanyLocalService;
 import com.liferay.portal.service.ResourceLocalService;
 import com.liferay.portal.service.ResourceService;
 import com.liferay.portal.service.UserLocalService;
@@ -50,7 +51,18 @@ public abstract class TestServiceBaseImpl extends PrincipalBean
     protected UserService userService;
     @BeanReference(type = UserPersistence.class)
     protected UserPersistence userPersistence;
-    private String _beanIdentifier;
+    @BeanReference(type = CompanyLocalService.class)
+	protected CompanyLocalService companyLocalService;
+
+	public CompanyLocalService getCompanyLocalService() {
+		return companyLocalService;
+	}
+
+	public void setCompanyLocalService(CompanyLocalService companyLocalService) {
+		this.companyLocalService = companyLocalService;
+	}
+
+	private String _beanIdentifier;
 
     /*
      * NOTE FOR DEVELOPERS:
@@ -75,7 +87,6 @@ public abstract class TestServiceBaseImpl extends PrincipalBean
     public void setTestService(TestService testService) {
         this.testService = testService;
     }
-
     /**
      * Returns the counter local service.
      *
